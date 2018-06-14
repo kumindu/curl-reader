@@ -1,7 +1,5 @@
 # knf-curl
 knf crul application
-# knf-csv
-knf csv application
 /*
  * Copyright (C) 2018 KUMINDU INDURANGA RANAWAKA
  *
@@ -20,3 +18,20 @@ knf csv application
  */
  
  
+        KnfCurlHandler knfp=new KnfCurlHandler();
+
+        knfp.COMMAND.add("curl");
+        knfp.COMMAND.add("-k");
+        knfp.COMMAND.add("-i");
+        knfp.COMMAND.add("-d");
+        knfp.COMMAND.add("grant_type=password&username=admin&password=admin");
+        knfp.COMMAND.add("-H");
+        knfp.COMMAND.add("Authorization:token");
+        knfp.COMMAND.add("https://127.0.0.1:8000/");
+        
+        knfp.Process();
+
+        System.out.println(knfp.getContent());
+        System.out.println(knfp.getresponseCode());
+        System.out.println(knfp.getValue("token_type"));
+        
